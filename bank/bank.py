@@ -1,6 +1,6 @@
 class Bank:
     def __init__(self):
-        self.branch = [1111, 2222, 3333,4444]
+        self.branch = [1111, 2222, 3333, 4444]
         self.client = []
         self.account = []
 
