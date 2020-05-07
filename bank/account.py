@@ -1,16 +1,17 @@
+from dataclasses import dataclass
 from abc import ABC, abstractclassmethod
 from OOP.bank.real_time import RealTime
 from OOP.bank.log import Log
 from time import sleep
 
 
+@dataclass()
 class Account(ABC, Log):
 
-    def __init__(self, branch, number, holder, balance):
-        self._branch = branch
-        self._number = number
-        self._holder = holder
-        self._balance = balance
+    _branch: str
+    _number: int
+    _holder: str
+    _balance: int
 
     @property
     def number(self):
@@ -30,7 +31,7 @@ class Account(ABC, Log):
     def transfer(self, amount, target_account):
         self.withdrawal(amount, name=self.holder)
         target_account.deposit(amount)
-        print(f'Transfering €{amount} from {self.__class__.__name__} Account to {target_account} Account... ...')
+        print(f'Transfering €{amount} from {self.__class__.__name__} Account to {target_account}')
         sleep(2)
         print('Transfer successful')
 
